@@ -1,4 +1,9 @@
+from asyncore import read
+from cgitb import reset
 from curses.ascii import isalpha, isdigit
+from inspect import stack
+from operator import truediv
+import re
 import task1
 
 

@@ -1,4 +1,5 @@
-from AbaccoStack import *
+from operator import truediv
+import task3
 import re
 
 
@@ -13,15 +14,13 @@ def main():
         return
     else:
         
-        game = AbaccoStack(no_of_colors, depth)
+        game = task3.AbaccoStack(no_of_colors, depth)
         start = True
         while start:
             game.show(True)
             print("Enter your move(s) [Q for quit and R to reset]: ")
             moves = input()
             moves = re.split(" ", moves)
-            # "1d 2u 2r"
-            # ["1d","2u","2r"]
             if len(moves) > 5:
                 print("Max 5 moves at once")
                 continue
@@ -31,7 +30,6 @@ def main():
                     
                     return
                 game.moveBead(move)
-                
             if game.isSolved():
                 print("Woalah!! you won")
                 return

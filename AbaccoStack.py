@@ -1,5 +1,6 @@
 import random
-from curses.ascii import isalpha, isdigit
+# from curses.ascii import isalpha, isdigit
+
 
 
 # **********************************************************
@@ -50,9 +51,10 @@ class card:
             second_x = random.choice(temp_list1)  
             second_y = random.choice(temp_list2) 
             # print(second_x,"  ",second_y)
-
+            #  a, b = b, a
             # swap random shuffled_init_beads
             unshuffled_beads[second_x][second_y], unshuffled_beads[first_x][first_y] = unshuffled_beads[first_x][first_y], unshuffled_beads[second_x][second_y]
+        
         return unshuffled_beads
             
     def test(self):
@@ -100,6 +102,8 @@ class card:
 
     def replace(self, filename, n):
         pass
+
+
 
 # task 1 ends
 # *************************************************************
@@ -152,7 +156,8 @@ class AbaccoStack(card):
             self.reset()
             return
 
-        if len(move) < 2 or len(move) >2 or not isalpha(move[1]) or not isdigit(move[0]):
+        # if len(move) < 2 or len(move) >2 or not isalpha(move[1]) or not isdigit(move[0]):
+        if len(move) < 2 or len(move) >2 or not move[1].isalpha() or not move[0].isnumeric():
             print("please input a valid move")
 
             
@@ -192,6 +197,7 @@ class AbaccoStack(card):
                 self.__move_right(int(move[0]))
                 self.moves += 1
                 pass
+
         elif move[1] == 'l' or move[1] == 'L':
             if int(move[0] == 0):
                 print("can't  move")
@@ -204,6 +210,7 @@ class AbaccoStack(card):
                 self.__move_left(int(move[0]))
                 self.moves += 1
                 pass
+        
         else:
             # raise Exception("Invalid Move")
             print("Invalid move")
@@ -211,7 +218,6 @@ class AbaccoStack(card):
 
     def __stackIsEmpty(self, stack_no):
         if self.unshuffled_beads_for_user[stack_no-1][self.depth-1] == '.':
-        
             # print(self.unshuffled_beads_for_user[stack_no-1][0])
             return True
         else:
